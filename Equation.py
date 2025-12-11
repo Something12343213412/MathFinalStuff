@@ -6,11 +6,11 @@ class Equation:
     def evaluate(self, x):
         return 0
 
-    def get_text(self):
+    def to_string(self):
         return "empty"
 
-    def get_integral(self):
+    def take_integral(self):
         return 0
 
-    def get_derivative(self):
+    def take_derivative(self):
         return 0
