@@ -1,11 +1,11 @@
-from Equation import Equation
+from Function import Function
 from random import randint, choice
 from math import exp
 
 # possible exponents that can be chosen, more positive which means more likely a positive number will be gotten
 exponent_list = [4, 3.5, 3, 2.5, 2, 1.5, 1, .5, 0, -.5, -1, -1.5, -2]
 
-class Polynomial(Equation):
+class Polynomial(Function):
     def __init__(self, num_terms: int, coefficients=None, exponents=None):
         self.terms = []
         super().__init__()
