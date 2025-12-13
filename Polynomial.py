@@ -63,19 +63,20 @@ class Polynomial(Function):
         return output
 
     def take_derivative(self):
+        new_poly = self
         # removing zeros beforehand so no issues will happen with .length
         for i in self.terms:
             if i[1] == 0:
-                self.terms.remove(i)
+                new_poly.terms.remove(i)
 
-        for i in range(0, len(self.terms)):
+        for i in range(0, len(new_poly.terms)):
             # separating for readability
-            term = self.terms[i]
+            term = new_poly.terms[i]
             new_coef = term[0] * (term[1])
             new_exp = term[1] - 1
-            self.terms[i] = [new_coef, new_exp]
+            new_poly.terms[i] = [new_coef, new_exp]
 
-        return self
+        return new_poly
 
     # exists to have a tool to prevent /0 errors that come from the exponent of -1
     # ln solution will be in a different type of poly
@@ -85,17 +86,17 @@ class Polynomial(Function):
                 self.terms.remove(i)
 
     def take_integral(self, c=None):
-        output = ""
+        new_poly = self
         for i in range(0, len(self.terms)):
-            term = self.terms[i]
+            term = new_poly.terms[i]
             new_coef = term[0] / (term[1]+1)
             new_exp = term[1] + 1
-            self.terms[i] = [new_coef, new_exp]
+            new_poly.terms[i] = [new_coef, new_exp]
 
         if c is not None:
-            self.terms.append([c, 0])
+            new_poly.terms.append([c, 0])
 
-        return self
+        return new_poly
 
     def evaluate(self, x):
         output = 0

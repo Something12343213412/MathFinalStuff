@@ -6,7 +6,7 @@ class FindCriticalNumbers:
         self.time = 0
         self.polynomial, self.factors = Polynomial.generate_factorable(num_terms)
         # integrating, doesn't change the math of the critical numbers or factors
-        self.polynomial.take_integral()
+        self.polynomial = self.polynomial.take_integral()
         self.critical_nums = []
         # finding critical numbers based on factors
         for i in self.factors:
@@ -29,7 +29,7 @@ class FindCriticalNumbers:
 class FindInflection(FindCriticalNumbers):
     def __init__(self, num_terms):
         super().__init__(num_terms)
-        self.polynomial.take_integral()
+        self.polynomial = self.polynomial.take_integral()
 
     def ask_question(self):
         start = time()
