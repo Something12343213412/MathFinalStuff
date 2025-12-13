@@ -78,5 +78,47 @@ class MultipliedFunction(Function):
         return MultipliedFunction(left, right)
 
 
-# can't just do inverse since can't just mess with exponents as haven't built infastructure yet
-class DividedFunction(Function):
+# here in the file to avoid circular imports, hopefully works :)
+from Polynomial import Polynomial
+# A function raised to a real number power
+class RealExponentFunction(Function):
+    def __init__(self, inside:Function, exponent:float):
+        super().__init__()
+        self.inside = inside
+        self.exponent = exponent
+
+    def evaluate(self, x):
+        # not sure on limits of ** function, gonna find out lol
+        return self.inside.evaluate(x)**x
+
+    def to_string(self):
+        return f"({self.inside.to_string()})^{self.exponent}"
+
+    # assumes form of f(u)du, very restricted
+    def take_integral(self):
+        # adding 1 to the exponent
+        new_exp = self.exponent+1
+        # creates exponent^-1 in the form of a polynomial
+        coef = Polynomial(1, [new_exp**(-1)], [0])
+        # takes the original function and multiplies it by the coef found earlier
+        inside = MultipliedFunction(self.inside, coef)
+        # return the function with the nex exp
+        return RealExponentFunction(inside, new_exp)
+
+    # assumes d/dx[f(g(x))] = df(g(x))*dg(x), could be infinite composition
+    def take_derivative(self):
+        # d/dx x^n = nx^(...)
+        coef = Polynomial(1, [self.exponent], [0])
+        # d/dx x^n = nx^(n-1)
+        new_exp = self.exponent-1
+        # d/dx f(x)^n = nf(x)^...*...
+        inside = MultipliedFunction(self.inside, coef)
+        # d/dx f(x)^n = nf(x)^(n-1)*...
+        left = RealExponentFunction(inside, new_exp)
+        # d/dx f(x)^n = ...*d/dx f(x)
+        right = self.inside.take_derivative()
+        # d/dx f(x)^n = nf(x)^(n-1)*df(x)
+        return MultipliedFunction(left, right)
+
+# can't just do inverse since can't just mess with exponents as haven't built infrastructure yet
+#class DividedFunction(Function):
