@@ -1,18 +1,17 @@
 from Polynomial import Polynomial
+from criticalNumbers import FindCriticalNumbers, FindInflection
+from radiusVolumeRates import SphereRate
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
-
-
-a = Polynomial(6)
+a = Polynomial(2)
+b = FindCriticalNumbers(2)
+c = FindInflection(1)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print(a.to_string())
-    a.take_derivative()
-    print(a.to_string())
-    a.take_integral(4)
-    print(a.to_string())
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    #b.ask_question()
+    c.ask_question()
+    #initial_question = SphereRate()
+    #print(initial_question.ask_question())
+    Polynomial.generate_factorable(2)
+    #print(a.to_string())
+    #print(a.multiply().to_string())

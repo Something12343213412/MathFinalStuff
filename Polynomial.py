@@ -1,5 +1,6 @@
 from Equation import Equation
 from random import randint, choice
+from math import exp
 
 # possible exponents that can be chosen, more positive which means more likely a positive number will be gotten
 exponent_list = [4, 3.5, 3, 2.5, 2, 1.5, 1, .5, 0, -.5, -1, -1.5, -2]
@@ -32,11 +33,8 @@ class Polynomial(Equation):
             # append an array with first index of coefficient and second of exponent
             self.terms.append([coefficients[i], exponents[i]])
 
-        print(self.terms)
-
         # sort by order
         self.terms.sort(key=lambda term: term[1], reverse=True)
-        print(self.terms)
 
     def take_out_zeros_coef(self):
         for i in self.terms:
@@ -89,3 +87,53 @@ class Polynomial(Equation):
             self.terms.append([c, 0])
 
         return self
+
+    def evaluate(self, x):
+        output = 0
+        for i in self.terms:
+            output += i[0]*(x**i[1])
+        return output
+
+    # multiplies a factor to the polynomial. Factor format [ceof x, + num]
+    def multiply(self, factor=[5, 3]):
+        new_terms = []
+        # Loops through each term
+        for i in self.terms:
+            new_coef = i[0]*factor[0]
+            new_exp = i[1] + 1
+            new_terms.append([new_coef, new_exp])
+            # next term
+            new_coef = i[0]*factor[1]
+            new_exp = i[1]
+            new_terms.append([new_coef, new_exp])
+            # having list be long just to account for any possible issues that could come
+            new_poly = Polynomial(len(new_terms), [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+            new_poly.terms = new_terms
+        return new_poly
+
+    @staticmethod
+    def generate_factorable(num_factors):
+        factors = []
+        # polynomial of coef 1 and exp 0, just 1
+        new_poly = Polynomial(1, [1], [0])
+        for i in range(0, num_factors):
+            factor = [randint(1, 3), randint(-2, 2)]
+            # storing for future printing out / checking
+            factors.append(factor)
+            #
+            new_poly = new_poly.multiply(factor)
+
+        # a dictionary with each key being an exponent and the value being the coefficient
+        exps = {}
+
+        # need to combine like terms
+        for i in new_poly.terms:
+            if i[1] in exps:
+                exps[i[1]] += i[0]
+            else:
+                exps[i[1]] = i[0]
+
+        new_poly = Polynomial(len(exps.keys()), list(exps.values()), list(exps.keys()))
+        #print(new_poly.to_string())
+        #print(factors)
+        return new_poly, factors

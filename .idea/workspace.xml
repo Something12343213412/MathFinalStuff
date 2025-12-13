@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96de715-d521-4e42-9202-39478ed2dc2f" name="Changes" comment="Firs commit yipee">
+    <list default="true" id="d96de715-d521-4e42-9202-39478ed2dc2f" name="Changes" comment="commit for the night. Right now polynomial code is finished and the next goal is to get basic trig to work. The biggest difficulty is going to be implementing chain rule and so on but it should be fine I think.">
+      <change afterPath="$PROJECT_DIR$/criticalNumbers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/misc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/radiusVolumeRates.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Equation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Equation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Polynomial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Polynomial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -25,34 +27,34 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Something12343213412"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Something12343213412&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Something12343213412/MathFinalStuff.git",
-    "accountId": "ca34f451-eed9-4da4-8f8e-e85b03c66bae"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Something12343213412/MathFinalStuff.git&quot;,
+    &quot;accountId&quot;: &quot;ca34f451-eed9-4da4-8f8e-e85b03c66bae&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="36gFj85H4qxesHnIJwr3Z8FqIZg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Test0\PycharmProjects\MathFinalPractice2" />
@@ -106,11 +108,20 @@
       <option name="project" value="LOCAL" />
       <updated>1765429827280</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit for the night. Right now polynomial code is finished and the next goal is to get basic trig to work. The biggest difficulty is going to be implementing chain rule and so on but it should be fine I think.">
+      <option name="closed" value="true" />
+      <created>1765431724774</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1765431724774</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Firs commit yipee" />
-    <option name="LAST_COMMIT_MESSAGE" value="Firs commit yipee" />
+    <MESSAGE value="commit for the night. Right now polynomial code is finished and the next goal is to get basic trig to work. The biggest difficulty is going to be implementing chain rule and so on but it should be fine I think." />
+    <option name="LAST_COMMIT_MESSAGE" value="commit for the night. Right now polynomial code is finished and the next goal is to get basic trig to work. The biggest difficulty is going to be implementing chain rule and so on but it should be fine I think." />
   </component>
 </project>
