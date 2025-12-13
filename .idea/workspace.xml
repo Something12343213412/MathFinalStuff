@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96de715-d521-4e42-9202-39478ed2dc2f" name="Changes" comment="commit for the night. Right now polynomial code is finished and the next goal is to get basic trig to work. The biggest difficulty is going to be implementing chain rule and so on but it should be fine I think.">
-      <change afterPath="$PROJECT_DIR$/criticalNumbers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/misc.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/radiusVolumeRates.py" afterDir="false" />
+    <list default="true" id="d96de715-d521-4e42-9202-39478ed2dc2f" name="Changes" comment="did shit">
+      <change afterPath="$PROJECT_DIR$/IntegralRuleProblems.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Equation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Equation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Polynomial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Polynomial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WordProblems.py" beforeDir="false" afterPath="$PROJECT_DIR$/WordProblems.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,12 +116,21 @@
       <option name="project" value="LOCAL" />
       <updated>1765431724774</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="did shit">
+      <option name="closed" value="true" />
+      <created>1765594260055</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765594260055</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Firs commit yipee" />
     <MESSAGE value="commit for the night. Right now polynomial code is finished and the next goal is to get basic trig to work. The biggest difficulty is going to be implementing chain rule and so on but it should be fine I think." />
-    <option name="LAST_COMMIT_MESSAGE" value="commit for the night. Right now polynomial code is finished and the next goal is to get basic trig to work. The biggest difficulty is going to be implementing chain rule and so on but it should be fine I think." />
+    <MESSAGE value="did shit" />
+    <option name="LAST_COMMIT_MESSAGE" value="did shit" />
   </component>
 </project>

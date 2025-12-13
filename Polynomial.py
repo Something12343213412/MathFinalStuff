@@ -42,6 +42,8 @@ class Polynomial(Equation):
                 self.terms.remove(i)
 
     def to_string(self):
+        # sort by order
+        self.terms.sort(key=lambda term: term[1], reverse=True)
         output = ""
         # probably could make more efficient using something like join but oh well
         for i in self.terms:
@@ -74,6 +76,13 @@ class Polynomial(Equation):
             self.terms[i] = [new_coef, new_exp]
 
         return self
+
+    # exists to have a tool to prevent /0 errors that come from the exponent of -1
+    # ln solution will be in a different type of poly
+    def remove_power(self, power):
+        for i in self.terms:
+            if i[1] == power:
+                self.terms.remove(i)
 
     def take_integral(self, c=None):
         output = ""
@@ -110,6 +119,12 @@ class Polynomial(Equation):
             new_poly = Polynomial(len(new_terms), [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
             new_poly.terms = new_terms
         return new_poly
+
+    # takes in a number and decreases each number by that
+    def divide_by_x(self, number):
+        # I think looping through an array directly would cause me to not be able to change the memory so doing this
+        for i in range(0, len(self.terms)):
+            self.terms[i][1] -= number
 
     @staticmethod
     def generate_factorable(num_factors):

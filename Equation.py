@@ -1,4 +1,5 @@
 # base class for which all other types will be based on
+# realize a bad name but too late now lmao
 class Equation:
     def __init__(self):
         pass
