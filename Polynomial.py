@@ -1,5 +1,6 @@
 from Function import Function
 from random import randint, choice
+from copy import deepcopy
 from math import exp
 
 # possible exponents that can be chosen, more positive which means more likely a positive number will be gotten
@@ -51,19 +52,20 @@ class Polynomial(Function):
             if self.terms.index(i) == len(self.terms)-1:
                 # checking if exp is 0
                 if i[1] == 0:
-                    output = output + f" {i[0]}"
+                    output = output + f"{i[0]}"
                 else:
-                    output = output + f" {i[0]}x^{i[1]}"
+                    output = output + f"{i[0]}x^{i[1]}"
             else:
                 if i[1] == 0:
-                    output = output + f" {i[0]} +"
+                    output = output + f"{i[0]} + "
                 else:
-                    output = output + f" {i[0]}x^{i[1]} +"
+                    output = output + f"{i[0]}x^{i[1]} + "
 
         return output
 
     def take_derivative(self):
-        new_poly = self
+        # need to use deep copy bc needs to create a copy as don't want to actually change the data of the og poly
+        new_poly = deepcopy(self)
         # removing zeros beforehand so no issues will happen with .length
         for i in self.terms:
             if i[1] == 0:
