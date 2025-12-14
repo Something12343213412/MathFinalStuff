@@ -1,4 +1,4 @@
-from Polynomial import Polynomial
+from FunctionOperations import Polynomial
 from time import time
 
 class FindCriticalNumbers:

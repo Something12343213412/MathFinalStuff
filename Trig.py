@@ -1,8 +1,7 @@
-from Function import Function, MultipliedFunction
-from Polynomial import Polynomial
+from FunctionOperations import *
 from math import sin, cos, pi
 
-class Sin(Function):
+class Sin(BasicFuncOperations):
     # base inside will be just x
     def __init__(self, coef=1, inside: Function = Polynomial(1, [1], [1])):
         super().__init__()
@@ -23,9 +22,7 @@ class Sin(Function):
     def take_derivative(self):
         return MultipliedFunction(Cos(coef=-self.coef, inside=self.inside), self.inside.take_derivative())
 
-    # exists to multiply functions
-    def multiply(self, other: Function):
-        return MultipliedFunction(self, other)
+
 
 class Cos(Function):
     def __init__(self, coef=1, inside: Function = Polynomial(1, [1], [1])):

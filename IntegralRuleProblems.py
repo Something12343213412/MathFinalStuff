@@ -1,4 +1,4 @@
-from Polynomial import Polynomial
+from FunctionOperations import Polynomial
 from time import time
 from random import randint
 
@@ -57,7 +57,7 @@ class BasicPowerRule:
         self.base_polynomial.remove_power(-1)
         
         print(f"Take the integral of ({self.base_polynomial.to_string()})({factor[0]}x + {factor[1]})")
-        new_poly = self.base_polynomial.multiply(factor)
+        new_poly = self.base_polynomial.multiply_factor(factor)
         self.time = time()
         input("Press enter when finished")
         self.time = time() - self.time

@@ -1,5 +1,5 @@
 #problem type of given radius or edge of something find area
-from Polynomial import Polynomial
+from FunctionOperations import Polynomial
 from random import randint
 from time import time
 
