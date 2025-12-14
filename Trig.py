@@ -75,5 +75,5 @@ class Tan(Function):
     def take_derivative(self):
         #checks if it is just multiplying by 1
         if self.inside.take_derivative().to_string() == "":
-            return Sin(coef=-self.coef, inside=self.inside)
-        return MultipliedFunction(Sin(coef=-self.coef, inside=self.inside), self.inside.take_derivative())
+            return RealExponentFunction(Cos(coef=-self.coef, inside=self.inside), -2)
+        return MultipliedFunction(RealExponentFunction(Cos(coef=-self.coef, inside=self.inside), -2), self.inside.take_derivative())

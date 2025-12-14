@@ -7,7 +7,8 @@ from copy import deepcopy
 # in here bc of circ imports, the code is maximal spaghetti
 # region polynomial
 # possible exponents that can be chosen, more positive which means more likely a positive number will be gotten
-exponent_list = [4, 3.5, 3, 2.5, 2, 1.5, 1, .5, 0, -.5, -1, -1.5, -2]
+#exponent_list = [4, 3.5, 3, 2.5, 2, 1.5, 1, .5, 0, -.5, -1, -1.5, -2]
+exponent_list = [1, 2, 3, 4, 5]
 # do not try to understand this class, this is the most spaghetti thing I wrote before I made the rest of the infastructure
 class Polynomial(Function):
     def __init__(self, num_terms: int, coefficients=None, exponents=None):
@@ -52,15 +53,22 @@ class Polynomial(Function):
         # probably could make more efficient using something like join but oh well
         for i in self.terms:
             if not i[0] == 1:
-                output += f"{i[0]}"
+                output += f"{i[0]}".removesuffix(".0")
             # making output more readable
             if not i[1] == 0:
                 output += "x"
                 if not i[1] == 1:
-                    output += f"^{i[1]}"
+                    output += f"^{i[1]}".removesuffix(".0")
+
+            #print(f"i is = ", i)
+            #special case if it is just 1
+            if i == [1, 0]:
+                output += "1"
             # putting + sign if index is not last
             if self.terms.index(i) < len(self.terms)-1:
                 output += " + "
+
+
             """
             # don't put + sign if at the end
             if self.terms.index(i) == len(self.terms)-1:
