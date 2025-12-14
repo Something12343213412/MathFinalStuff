@@ -51,19 +51,34 @@ class Polynomial(Function):
         output = ""
         # probably could make more efficient using something like join but oh well
         for i in self.terms:
+            if not i[0] == 1:
+                output += f"{i[0]}"
+            # making output more readable
+            if not i[1] == 0:
+                output += "x"
+                if not i[1] == 1:
+                    output += f"^{i[1]}"
+            # putting + sign if index is not last
+            if self.terms.index(i) < len(self.terms)-1:
+                output += " + "
+            """
             # don't put + sign if at the end
             if self.terms.index(i) == len(self.terms)-1:
                 # checking if exp is 0
                 if i[1] == 0:
                     output = output + f"{i[0]}"
+                elif i[1] == 1:
+                    output += f"{i[0]}x"
                 else:
                     output = output + f"{i[0]}x^{i[1]}"
             else:
                 if i[1] == 0:
                     output = output + f"{i[0]} + "
+                elif i[1] == 1:
+                    output += f"{i[0]}x + "
                 else:
                     output = output + f"{i[0]}x^{i[1]} + "
-
+            """
         return output
 
     def take_derivative(self):
@@ -126,6 +141,14 @@ class Polynomial(Function):
             new_poly.terms = new_terms
         return new_poly
 
+    # multiplies a specific term, here to make multiply code look cleaner
+    def multiply_term(self, coef=1, exponent=1):
+        new_terms = {}
+        for i in self.terms:
+            #multiply coef and add exponents
+            new_terms[i[1] + exponent] = i[0]*coef
+        return Polynomial(len(list(new_terms.keys())), list(new_terms.values()), list(new_terms.keys()))
+
     # takes in a number and decreases each number by that
     def divide_by_x(self, number):
         # I think looping through an array directly would cause me to not be able to change the memory so doing this
@@ -161,12 +184,32 @@ class Polynomial(Function):
 
     # have to put these here bc base func operations relies on this so oh well
     def multiply(self, other: Function = None):
+        new_poly = Polynomial(0, [], [])
+        if other.__class__ == Polynomial:
+            for i in other.terms:
+                multiplied_terms = self.multiply_term(i[0], i[1])
+                #print(f"multiplied terms {multiplied_terms.to_string()}")
+                new_poly = new_poly.add(multiplied_terms)
+            return new_poly
+
         return MultipliedFunction(self, other)
 
+    # can't simplify as can't do simple exponent operations
     def divide(self, other: Function = None):
         return MultipliedFunction(self, RealExponentFunction(other, -1))
 
-    def add(self, other=None):
+    def add(self, other: Function = None):
+        if other.__class__ == Polynomial:
+            exponents = {}
+            terms = self.terms + other.terms
+            #print(f"terms when adding {terms}")
+            # need to combine like terms
+            for i in terms:
+                if i[1] in exponents:
+                    exponents[i[1]] += i[0]
+                else:
+                    exponents[i[1]] = i[0]
+            return Polynomial(len(exponents.keys()), list(exponents.values()), list(exponents.keys()))
         return AddedFunction(self, other)
 
     def subtract(self, other=None):
@@ -180,6 +223,7 @@ class Polynomial(Function):
 
 # declaring a constant just for ease as it is used in each subtraction formula
 negative_one = Polynomial(1, [-1], [0])
+positive_one = Polynomial(1, [1], [0])
 
 # purely for inheritance purposes, contains all basic func operations
 class BasicFuncOperations(Function):
