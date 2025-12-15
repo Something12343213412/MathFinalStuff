@@ -72,7 +72,7 @@ class Tan(Function):
         return None
 
     def take_derivative(self):
-        inside = MultiplyScalar(-self.coef**2, SecSquared(inside=self.inside))
+        inside = MultiplyScalar(self.coef**2, SecSquared(inside=self.inside))
         #checks if it is just multiplying by 1
         #print(self.inside.take_derivative().to_string())
         if self.inside.take_derivative().to_string() == "1" or self.inside.take_derivative().to_string() == "":
@@ -104,8 +104,8 @@ class Csc(Function):
         csc_out.coef *= -1
         #checks if it is just multiplying by 1
         if self.inside.take_derivative().to_string() == "":
-            return MultipliedFunction(csc_out, Cot(self.inside))
-        return MultipliedFunction(MultipliedFunction(csc_out, Cot(self.inside)), self.inside.take_derivative())
+            return MultiplyScalar(-1, CscCot(self.inside))
+        return MultipliedFunction(MultiplyScalar(-1, CscCot(self.inside)), self.inside.take_derivative())
 
 class Sec(Function):
     def __init__(self, inside: Function = Polynomial(1, [1], [1]), coef=1):
@@ -131,8 +131,8 @@ class Sec(Function):
         sec_out = deepcopy(self)
         # checks if it is just multiplying by 1
         if self.inside.take_derivative().to_string() == "":
-            return MultipliedFunction(sec_out, Tan(self.inside))
-        return MultipliedFunction(MultipliedFunction(sec_out, Tan(self.inside)), self.inside.take_derivative())
+            return SecTan(self.inside)
+        return MultipliedFunction(SecTan(self.inside), self.inside.take_derivative())
 
 class Cot(Function):
     def __init__(self, inside: Function = Polynomial(1, [1], [1]), coef=1):
@@ -180,5 +180,18 @@ class CscSquared(RealExponentFunction):
         return Cot(inside=self.inside, coef=-1)
 
 
-class SecTan():
-    pass
+class SecTan(MultipliedFunction):
+    def __init__(self, inside: Function = Polynomial(1, [1], [1])):
+        super().__init__(left=Sec(inside), right=Tan(inside))
+
+    def take_integral(self):
+        return Sec(self.left.inside)
+
+
+class CscCot(MultipliedFunction):
+    def __init__(self, inside: Function = Polynomial(1, [1], [1])):
+        super().__init__(left=Csc(inside), right=Cot(inside))
+
+    def take_integral(self):
+        return MultiplyScalar(-1, Csc(self.left.inside))
+

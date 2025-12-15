@@ -1,6 +1,7 @@
 from FunctionOperations import Polynomial
 from time import time
 from random import randint
+from Trig import *
 
 # Applying power rule to 3 cases, just polynomial, polynomial times a factor, polynomial divided by a number
 class BasicPowerRule:
@@ -76,3 +77,11 @@ class BasicPowerRule:
             return self.question_type_2()
         else:
             return self.question_type_3()
+
+
+#just basic trig
+class BasicTrig:
+    def __init__(self, trig_func=None):
+        if trig_func is None:
+            pass
+        self.time = 0
