@@ -72,9 +72,10 @@ class Tan(Function):
         return None
 
     def take_derivative(self):
-        inside = MultipliedFunction(Polynomial(1, [-self.coef ** 2], [0]), SecSquared(inside=self.inside))
+        inside = MultiplyScalar(-self.coef**2, SecSquared(inside=self.inside))
         #checks if it is just multiplying by 1
-        if self.inside.take_derivative().to_string() == "":
+        #print(self.inside.take_derivative().to_string())
+        if self.inside.take_derivative().to_string() == "1" or self.inside.take_derivative().to_string() == "":
             return inside
         return MultipliedFunction(inside, self.inside.take_derivative())
 
@@ -154,11 +155,11 @@ class Cot(Function):
 
     # returns -cos(u) * du
     def take_derivative(self):
-        inside = Csc(coef=-self.coef, inside=self.inside)
+        inside = MultiplyScalar(-self.coef**2, CscSquared(inside=self.inside))
         #checks if it is just multiplying by 1
-        if self.inside.take_derivative().to_string() == "":
-            return MultipliedFunction(Polynomial(1, [-self.coef**2], [0]), CscSquared(self.inside))
-        return MultipliedFunction(MultipliedFunction(Polynomial(1, [-self.coef**2], [0]), CscSquared(self.inside)), self.inside.take_derivative())
+        if self.inside.take_derivative().to_string() == "1" or self.inside.take_derivative().to_string() == "":
+            return inside
+        return MultipliedFunction(inside, self.inside.take_derivative())
 
 # area for special / specific classes due to easy integral rules
 class SecSquared(RealExponentFunction):
@@ -167,7 +168,7 @@ class SecSquared(RealExponentFunction):
         super().__init__(inside=inside, exponent=2)
 
     def take_integral(self):
-        return Tan(inside=self.inside)
+        return Tan(inside=self.inside.inside)
 
 
 class CscSquared(RealExponentFunction):
