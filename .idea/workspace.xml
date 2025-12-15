@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96de715-d521-4e42-9202-39478ed2dc2f" name="Changes" comment="Added all 6 basic trig functions and one special case">
+    <list default="true" id="d96de715-d521-4e42-9202-39478ed2dc2f" name="Changes" comment="Added some shit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Trig.py" beforeDir="false" afterPath="$PROJECT_DIR$/Trig.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -45,13 +45,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Test0\PycharmProjects\MathFinalPractice2" />
@@ -193,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765756210709</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added some shit">
+      <option name="closed" value="true" />
+      <created>1765757329830</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1765757329830</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -209,6 +217,7 @@
     <MESSAGE value="Cleaned up a lot of things in function operations allowing polynomials to actually be readable" />
     <MESSAGE value="fixed a small visual error" />
     <MESSAGE value="Added all 6 basic trig functions and one special case" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added all 6 basic trig functions and one special case" />
+    <MESSAGE value="Added some shit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some shit" />
   </component>
 </project>
