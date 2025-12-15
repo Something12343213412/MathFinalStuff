@@ -195,3 +195,5 @@ class CscCot(MultipliedFunction):
     def take_integral(self):
         return MultiplyScalar(-1, Csc(self.left.inside))
 
+
+trig_integral_functions = [CscCot, SecTan, CscSquared, SecSquared]

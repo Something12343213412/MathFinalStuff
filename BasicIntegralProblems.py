@@ -83,5 +83,34 @@ class BasicPowerRule:
 class BasicTrig:
     def __init__(self, trig_func=None):
         if trig_func is None:
-            pass
+            trig_func = choice(trig_integral_functions)()
         self.time = 0
+        self.trig_func = trig_func
+
+    def ask_question(self):
+        # asking to multiply two polynomials then include a trig func
+        left = Polynomial(2)
+        right = Polynomial(2)
+        poly = left.multiply(right)
+        full_func = AddedFunction(poly, self.trig_func)
+        print(f"take the integral ({left.to_string()})({right.to_string()})+{self.trig_func.to_string()}")
+        self.time = time()
+        input("Press enter when finished")
+        self.time = time() - self.time
+        print(f"Function before integral = {full_func.to_string()}")
+        if input(f"Answer was {full_func.take_integral().to_string()} + C, Where you correct (y/n)") == "y":
+            return True, self.time
+        else:
+            return False, self.time
+
+    def question_simple(self):
+        poly = Polynomial(2)
+        full_func = AddedFunction(poly, self.trig_func)
+        print(f"take the integral ({poly.to_string()})+{self.trig_func.to_string()}")
+        self.time = time()
+        input("Press enter when finished")
+        self.time = time() - self.time
+        if input(f"Answer was {full_func.take_integral().to_string()} + C, Where you correct (y/n)") == "y":
+            return True, self.time
+        else:
+            return False, self.time
