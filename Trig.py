@@ -72,10 +72,11 @@ class Tan(Function):
         return None
 
     def take_derivative(self):
+        inside = MultipliedFunction(Polynomial(1, [-self.coef ** 2], [0]), SecSquared(inside=self.inside))
         #checks if it is just multiplying by 1
         if self.inside.take_derivative().to_string() == "":
-            return RealExponentFunction(Sec(coef=self.coef, inside=self.inside), 2)
-        return MultipliedFunction(RealExponentFunction(Sec(coef=self.coef, inside=self.inside), 2), self.inside.take_derivative())
+            return inside
+        return MultipliedFunction(inside, self.inside.take_derivative())
 
 class Csc(Function):
     def __init__(self, inside: Function = Polynomial(1, [1], [1]), coef=1):
@@ -104,6 +105,7 @@ class Csc(Function):
         if self.inside.take_derivative().to_string() == "":
             return MultipliedFunction(csc_out, Cot(self.inside))
         return MultipliedFunction(MultipliedFunction(csc_out, Cot(self.inside)), self.inside.take_derivative())
+
 class Sec(Function):
     def __init__(self, inside: Function = Polynomial(1, [1], [1]), coef=1):
         super().__init__()
@@ -152,10 +154,11 @@ class Cot(Function):
 
     # returns -cos(u) * du
     def take_derivative(self):
+        inside = Csc(coef=-self.coef, inside=self.inside)
         #checks if it is just multiplying by 1
         if self.inside.take_derivative().to_string() == "":
-            return RealExponentFunction(Csc(coef=-self.coef, inside=self.inside), 2)
-        return MultipliedFunction(RealExponentFunction(Csc(coef=-self.coef, inside=self.inside), 2), self.inside.take_derivative())
+            return MultipliedFunction(Polynomial(1, [-self.coef**2], [0]), CscSquared(self.inside))
+        return MultipliedFunction(MultipliedFunction(Polynomial(1, [-self.coef**2], [0]), CscSquared(self.inside)), self.inside.take_derivative())
 
 # area for special / specific classes due to easy integral rules
 class SecSquared(RealExponentFunction):
@@ -165,3 +168,16 @@ class SecSquared(RealExponentFunction):
 
     def take_integral(self):
         return Tan(inside=self.inside)
+
+
+class CscSquared(RealExponentFunction):
+    def __init__(self, inside: Function = Polynomial(1, [1], [1])):
+        inside = Csc(inside)
+        super().__init__(inside=inside, exponent=2)
+
+    def take_integral(self):
+        return Cot(inside=self.inside, coef=-1)
+
+
+class SecTan():
+    pass

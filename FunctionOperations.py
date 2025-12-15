@@ -311,6 +311,27 @@ class MultipliedFunction(BasicFuncOperations):
         # combining both with new multiplied function
         return AddedFunction(left, right)
 
+class MultiplyScalar(Function):
+    def __init__(self, scalar: float, func: Function):
+        super().__init__()
+        self.scalar = scalar
+        self.func = func
+
+    def evaluate(self, x):
+        return self.scalar*self.func.evaluate(x)
+
+    def to_string(self):
+        return f"({self.scalar}{self.func.to_string()})"
+
+    # don't even try lmao
+    def take_integral(self):
+        return MultiplyScalar(self.scalar, self.func.take_integral())
+
+    def take_derivative(self):
+        return MultiplyScalar(self.scalar, self.func.take_derivative())
+
+
+
 # A function raised to a real number power
 class RealExponentFunction(BasicFuncOperations):
     def __init__(self, inside: Function, exponent: float):
